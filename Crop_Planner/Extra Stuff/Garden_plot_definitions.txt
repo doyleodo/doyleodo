@@ -1,0 +1,76 @@
+
+				User enters Garden details
+				
+
+	User enters length and width of garden in feet:
+		Garden width: 10'
+		Garden length: 6'
+	
+	Garden's total area calculated:
+		10' x 6' = 60 sq ft
+	
+	Create an array with length of sq ft gardenArray(60)
+	(will be used to define garden and plot layout)
+	
+	
+					10'
+	 _____________________________
+	|__|__|__|__|__|__|__|__|__|__|
+	|__|__|__|__|__|__|__|__|__|__|
+	|__|__|__|__|__|__|__|__|__|__|	6'
+	|__|__|__|__|__|__|__|__|__|__|
+	|__|__|__|__|__|__|__|__|__|__|
+	|__|__|__|__|__|__|__|__|__|__|
+	
+	
+	user selects which veggies they want to add:
+		Carrots (16 per sq ft)
+		Squash  (1 per sq ft)
+		Tomato  (1 per sq ft)
+	
+	
+	Calculate Sq footage for each vegetable plot:
+		60 sq ft / 3 vegetable selections = 20 sq ft for each vegetable
+			(will need to figure out what to do with decimals)
+	
+	add carrots to indexes 0 - 19 of gardenArray
+	add squash to indexes 20 - 39 of gardenArray
+	add Tomato to indexes 40 - 59 of gardenArray
+	
+	
+	carrots (fill the grid with the first 20 indexes of array)
+	 ___________
+	|__|__|__|__|
+	|__|__|__|__|
+	|__|__|__|
+	|__|__|__|
+	|__|__|__|
+	|__|__|__|
+	
+	
+	Squash (fill the next grid spaces with the next 20 indexes of array)
+			  ________
+	            |__|__|__|
+	          __|__|__|__|
+	         |__|__|__|__|
+	         |__|__|__|__|
+	         |__|__|__|
+	         |__|__|__|
+			 
+			 
+	Tomato (fill the remaining grid with the last 20 indexes of array)
+					     ________
+					    |__|__|__|
+					    |__|__|__|
+					    |__|__|__|
+					  __|__|__|__|
+					 |__|__|__|__|
+					 |__|__|__|__|
+	
+	
+	
+	calculate # of seeds for each plot and add to shopping list:
+		Carrots:	20 sq ft * 16 = 320 carrot seeds
+		Squash:  20 sq ft * 1 = 20 squash seeds
+		Tomato:  20 sq ft * 1 = 20 tomato seeds
+	
