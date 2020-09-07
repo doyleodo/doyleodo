@@ -33,51 +33,36 @@ COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS animal CASCADE;
-CREATE TABLE animal (
-		animal_id serial NOT NULL,
-        animal_name varchar(20) NOT NULL,
-		description varchar(100) NOT NULL,
+DROP TABLE IF EXISTS singable CASCADE;
+CREATE TABLE singable (
+	id serial NOT NULL,
+        singable_name varchar(20) NOT NULL,
+	description varchar(100) NOT NULL,
+	is_vehicle boolean NOT NULL,
         sound varchar(20) NOT NULL,
         region int NOT NULL,
-        CONSTRAINT PK_animal_id PRIMARY KEY (animal_id)
+        CONSTRAINT PK_singable_id PRIMARY KEY (id)
 );
 
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Horse', 'A Horse', 'Neigh', 1);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Cow', 'A Cow', 'Moo', 1);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Tiger', 'A Tiger', 'Roar', 2);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Elephant', 'An Elephant', 'Brphphph', 2);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Whale', 'A Whale', 'Hrrooo', 3);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Dolphin', 'A Dolphin', 'Ekikikiki', 3);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Whale', 'A Whale', 'Hrrooo', 3);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Xenomorph', 'A dangerous Alien. Run!', 'HISSKUKA', 4);
-INSERT INTO animal (animal_name, description, sound, region) VALUES ('Alf', 'An funny alien from planet Melmac', 'HAH!', 4);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Horse', 'A Horse', 'false', 'Neigh', 1);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Cow', 'A Cow', 'false', 'Moo', 1);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Tiger', 'A Tiger', 'false', 'Roar', 2);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Elephant', 'An Elephant', 'false', 'Brphphph', 2);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Whale', 'A Whale', 'false', 'Hrrooo', 3);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Dolphin', 'A Dolphin', 'false', 'Ekikikiki', 3);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Whale', 'A Whale', 'false', 'Hrrooo', 3);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Xenomorph', 'A dangerous Alien. Run!', 'false', 'HISSKUKA', 4);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Alf', 'An funny alien from planet Melmac', 'false', 'HAH!', 4);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Jeep', 'An offroad Jeep, perfect for traversing the Jungle', 'true', 'Beep', 2);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Sumbarine', 'A yellow submarine. Lets go diving underwater', 'true', 'Ping', 3);
+INSERT INTO singable (singable_name, description, is_vehicle, sound, region) VALUES ('Rocketship', 'Cruise the stars. Go to the moon', 'true', 'FWOOOOSH', 4);
 
 COMMIT TRANSACTION;
 
-
-BEGIN TRANSACTION;
-
-DROP TABLE IF EXISTS vehicle CASCADE;
-CREATE TABLE vehicle (
-		vehicle_id serial NOT NULL,
-        vehicle_name varchar(20) NOT NULL,
-		description varchar(100) NOT NULL,
-        sound varchar(20) NOT NULL,
-        region int NOT NULL,
-        CONSTRAINT PK_vehicle_id PRIMARY KEY (vehicle_id)
-);
-
-INSERT INTO vehicle (vehicle_name, description, sound, region) VALUES ('Train', 'An old train', 'Chugga', 2);
-INSERT INTO vehicle (vehicle_name, description, sound, region) VALUES ('Sumbarine', 'A yellow submarine', 'Ping', 3);
-INSERT INTO vehicle (vehicle_name, description, sound, region) VALUES ('Rocketship', 'A rocketship', 'FWOOOOSH', 4);
-
-COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 
 ALTER TABLE users ADD FOREIGN KEY (current_region) REFERENCES region(region_id);
-ALTER TABLE animal ADD FOREIGN KEY (region) REFERENCES region(region_id);
-ALTER TABLE vehicle ADD FOREIGN KEY (region) REFERENCES region(region_id);
+ALTER TABLE singable ADD FOREIGN KEY (region) REFERENCES region(region_id);
 
 COMMIT TRANSACTION;
