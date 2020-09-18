@@ -27,10 +27,18 @@ public class SingableController {
 	}
 	
 	@RequestMapping(path = { "/regionSingables"}, method = RequestMethod.GET)
+	// example URL: http://localhost:8080/regionSingables?id=4
 	public Singable[] listRegionSingables(@RequestParam int id) {
 		List<Singable> regionSingables= theSingables.getSingablesByRegion(id);
 		Singable[] singables = new Singable[regionSingables.size()];
 		singables = regionSingables.toArray(singables);
 		return singables;
+	}
+	
+	@RequestMapping(path = {"/regionAnimal"}, method = RequestMethod.GET)
+	// example URL: http://localhost:8080/regionAnimal?name=Ocean
+	public Singable animalByRegionName(@RequestParam String name) {
+		Singable searchByNameResult = theSingables.getRandomAnimalByRegion(name);
+		return searchByNameResult;
 	}
 }

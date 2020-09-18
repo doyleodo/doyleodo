@@ -7,6 +7,10 @@ const http = axios.create( {
 export default {
     getAllSingables() {
         return http.get("/allSingables");
+    },
+
+    getRandomAnimal() {
+        return http.get("/regionAnimal");
     }
 
 };

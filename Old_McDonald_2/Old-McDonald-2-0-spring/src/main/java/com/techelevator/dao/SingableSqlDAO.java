@@ -42,6 +42,19 @@ public class SingableSqlDAO implements SingableDAO {
 	return retrievedSingables;
 	}
 	
+	@Override
+	public Singable getRandomAnimalByRegion(String regionName){
+	String sql = "SELECT * " + 
+			"FROM singable s " + 
+			"        JOIN region r ON s.region = r.region_id " + 
+			"WHERE r.region_name = ? AND is_vehicle != true " + 
+			"ORDER BY random() LIMIT 1;";
+	SqlRowSet results = template.queryForRowSet(sql, regionName);
+	results.next();
+	Singable randomAnimal = mapRowToSingable(results);
+	return randomAnimal;
+	}	
+	
 	private Singable mapRowToSingable(SqlRowSet results) {
 		Singable singable = new Singable();
 		singable.setId(results.getInt("id"));

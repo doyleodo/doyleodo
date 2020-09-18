@@ -8,5 +8,6 @@ public interface SingableDAO {
 
 	List<Singable> getAllSingables();
 	List<Singable> getSingablesByRegion(int regionId);
+	Singable getRandomAnimalByRegion(String regionName);
 
 }
